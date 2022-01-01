@@ -38,7 +38,7 @@ def mapByDupes(mapOfSizes):
 def fileHash(path):
     with open(path, 'rb') as f:
         bytes = f.read()
-        hash = hashlib.sha256(bytes).hexdigest()
+        hash = hashlib.md5(bytes).hexdigest()
         f.close()
     return hash 
 
