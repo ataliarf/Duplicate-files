@@ -7,19 +7,12 @@ def mapBySizes(mainFolder):
     for root, dirs, files in os.walk(mainFolder):
         for file in files:
             path = os.path.join(root, file)
-            size = fileSize(path)
+            size= os.stat(path).st_size
             if size in mapOfSizes:
                 mapOfSizes[size].append(path)
             else:
                 mapOfSizes[size] = [path]
     return mapOfSizes
-
-def fileSize(path):
-    with open(path, 'rb') as f:
-        f.seek(0, os.SEEK_END)
-        size = f.tell()
-        f.close()
-    return size
 
 #maps hash of file to file path
 def mapByDupes(mapOfSizes):
@@ -48,9 +41,8 @@ def printDuplicateFiles(dupesMap):
     for listOfFiles in values:
         if len(listOfFiles) > 1:
             found = 1
-            names = map(lambda x: os.path.basename(x), listOfFiles)
-            print('* duplicate files:'),
-            print(', '.join(names))     
+            print('* duplicate files: \n'),
+            print('\n'.join(listOfFiles))     
     if found==0:               
         print('no duplicate files.')
  
