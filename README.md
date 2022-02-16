@@ -6,7 +6,6 @@ This script scans a directory to find duplicate files based on their content.
 ##### * duplicate files: A, B, E
 ##### * duplicate files: D, F
 # 
-#####  To perform the task, I decided to choose MD5. 
 ##### MD5 is cryptographically hash function producing a 128-bit hash value.
 ##### The script gets a path as a input. First, I checked if the path is valid.
 ##### After it, I walked through all files within the folder and subfolders, mapping by size of each file to its path.
